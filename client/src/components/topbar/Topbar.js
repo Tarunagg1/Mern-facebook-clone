@@ -1,10 +1,9 @@
 import React from 'react'
 import './topbar.css';
-import SearchIcon from '@mui/icons-material/Search';
-import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
-import ChatIcon from '@mui/icons-material/Chat';
-import PersonIcon from '@mui/icons-material/Person';
-
+import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
+import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
+import ChatOutlinedIcon from '@mui/icons-material/ChatOutlined';
+import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
 
 export default function Topbar() {
     return (
@@ -14,7 +13,7 @@ export default function Topbar() {
             </div>
             <div className="topbarCenter">
                 <div className="searchBar">
-                    <SearchIcon />
+                    <SearchOutlinedIcon />
                     <input
                         placeholder="Search for friend, post or video"
                         className="searchInput"
@@ -28,15 +27,15 @@ export default function Topbar() {
                 </div>
                 <div className="topbarIcons">
                     <div className="topbarIconItem">
-                        <PersonIcon />
+                        <PersonOutlinedIcon />
                         <span className="topbarIconBadge">1</span>
                     </div>
                     <div className="topbarIconItem">
-                        <ChatIcon />
+                        <ChatOutlinedIcon />
                         <span className="topbarIconBadge">2</span>
                     </div>
                     <div className="topbarIconItem">
-                        <NotificationsNoneIcon />
+                        <NotificationsNoneOutlinedIcon />
                         <span className="topbarIconBadge">1</span>
                     </div>
                 </div>
