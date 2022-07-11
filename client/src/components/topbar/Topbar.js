@@ -4,12 +4,15 @@ import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
 import ChatOutlinedIcon from '@mui/icons-material/ChatOutlined';
 import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
+import { Link } from 'react-router-dom';
 
 export default function Topbar() {
     return (
         <div className="topContainer">
             <div className="topbarLeft">
-                <span className="logo">FriendBook</span>
+                <Link to="/">
+                    <span className="logo">FriendBook</span>
+                </Link>
             </div>
             <div className="topbarCenter">
                 <div className="searchBar">
