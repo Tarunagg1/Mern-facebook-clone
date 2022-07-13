@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import axiosinstance from '../../config/axios';
 import { useEffect } from 'react';
 
-export default function Post({ post, username }) {
+export default function Post({ post }) {
   const [like, setLike] = useState(post.like)
   const [isLiked, setIsLiked] = useState(false);
   const [user, setUser] = useState({});
@@ -40,7 +40,7 @@ export default function Post({ post, username }) {
               />
             </Link>
             <span className="postUsername">
-              {username}
+              {user.username}
               {/* {Users.filter((u) => u.id === post?.userId)[0].username} */}
             </span>
             <span className="postDate">{post.date}</span>

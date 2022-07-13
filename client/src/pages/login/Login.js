@@ -1,6 +1,30 @@
+import { useContext, useRef } from 'react';
+import axiosinstance from '../../config/axios';
+import { AuthContext } from '../../context/AuthContext';
 import "./login.css";
+import { CircularProgress } from '@mui/material';
 
 export default function Login() {
+  const email = useRef();
+  const password = useRef();
+  const { isFetching, dispatch } = useContext(AuthContext);
+
+
+  const handelLogin = async (e) => {
+    e.preventDefault();
+
+    dispatch({ type: "LOGIN_START" });
+
+    try {
+      const res = await axiosinstance.post("/auth/login", { email: email.current.value, password: password.current.value });
+      console.log(res);
+      dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+    } catch (err) {
+      dispatch({ type: "LOGIN_FAILURE", payload: err });
+    }
+  };
+
+
   return (
     <div className="login">
       <div className="loginWrapper">
@@ -11,15 +35,25 @@ export default function Login() {
           </span>
         </div>
         <div className="loginRight">
-          <div className="loginBox">
-            <input placeholder="Email" className="loginInput" />
-            <input placeholder="Password" className="loginInput" />
-            <button className="loginButton">Log In</button>
+          <form className="loginBox" onSubmit={handelLogin}>
+            <input placeholder="Email" className="loginInput" required ref={email} />
+            <input placeholder="Password" className="loginInput" required ref={password} />
+            <button className="loginButton" type="submit" disabled={isFetching}>
+              {isFetching ? (
+                <CircularProgress />
+              ) : (
+                "Log In"
+              )}
+            </button>
             <span className="loginForgot">Forgot Password?</span>
             <button className="loginRegisterButton">
-              Create a New Account
+              {isFetching ? (
+                <CircularProgress />
+              ) : (
+                "Create a New Account"
+              )}
             </button>
-          </div>
+          </form>
         </div>
       </div>
     </div>
