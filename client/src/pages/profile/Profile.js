@@ -9,16 +9,17 @@ import { useParams } from 'react-router-dom';
 
 export default function Profile() {
     const [user, setUser] = useState({});
-    const params = useParams();
+    const {username} = useParams();
+
 
     const fetchProfile = async () => {
-        const res = await axiosinstance.get(`/users?username=${params?.username}`);
-        setUser(res.data);
+        const res = await axiosinstance.get(`/users?username=${username}`);
+        console.log(res);
     }
 
     useEffect(() => {
         fetchProfile()
-    }, []);
+    }, [username]);
 
     return (
         <>
@@ -45,7 +46,7 @@ export default function Profile() {
                         </div>
                     </div>
                     <div className="profileRightBottom">
-                        <Feed username={params?.username} />
+                        <Feed username={username} />
                         <Rightbar user={user} />
                     </div>
                 </div>

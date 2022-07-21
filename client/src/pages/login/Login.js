@@ -3,6 +3,7 @@ import axiosinstance from '../../config/axios';
 import { AuthContext } from '../../context/AuthContext';
 import "./login.css";
 import { CircularProgress } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 export default function Login() {
   const email = useRef();
@@ -46,13 +47,15 @@ export default function Login() {
               )}
             </button>
             <span className="loginForgot">Forgot Password?</span>
-            <button className="loginRegisterButton">
-              {isFetching ? (
-                <CircularProgress />
-              ) : (
-                "Create a New Account"
-              )}
-            </button>
+            <Link to="/register">
+              <button type="submit" className="loginRegisterButton">
+                {isFetching ? (
+                  <CircularProgress />
+                ) : (
+                  "Create a New Account"
+                )}
+              </button>
+            </Link>
           </form>
         </div>
       </div>
