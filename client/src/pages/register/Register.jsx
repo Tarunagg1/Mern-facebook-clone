@@ -1,8 +1,7 @@
+import axios from "axios";
 import { useRef } from "react";
 import "./register.css";
 import { useHistory } from "react-router";
-import { Link } from 'react-router-dom';
-import axiosinstance from '../../config/axios';
 
 export default function Register() {
   const username = useRef();
@@ -22,7 +21,7 @@ export default function Register() {
         password: password.current.value,
       };
       try {
-        await axiosinstance.post("/auth/register", user);
+        await axios.post("/auth/register", user);
         history.push("/login");
       } catch (err) {
         console.log(err);
@@ -34,9 +33,9 @@ export default function Register() {
     <div className="login">
       <div className="loginWrapper">
         <div className="loginLeft">
-          <h3 className="loginLogo">Friendbook</h3>
+          <h3 className="loginLogo">Lamasocial</h3>
           <span className="loginDesc">
-            Connect with friends and the world around you on Friendbook.
+            Connect with friends and the world around you on Lamasocial.
           </span>
         </div>
         <div className="loginRight">
@@ -72,7 +71,7 @@ export default function Register() {
             <button className="loginButton" type="submit">
               Sign Up
             </button>
-            <Link to="/login"><button type="button" className="loginRegisterButton">Log into Account</button></Link>
+            <button className="loginRegisterButton">Log into Account</button>
           </form>
         </div>
       </div>

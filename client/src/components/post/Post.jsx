@@ -1,11 +1,10 @@
 import "./post.css";
-import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined';
+import { MoreVert } from "@material-ui/icons";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { format } from "timeago.js";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
-import axiosinstance from '../../config/axios';
 
 export default function Post({ post }) {
   const [like, setLike] = useState(post.likes.length);
@@ -20,7 +19,7 @@ export default function Post({ post }) {
 
   useEffect(() => {
     const fetchUser = async () => {
-      const res = await axiosinstance.get(`/users?userId=${post.userId}`);
+      const res = await axios.get(`/users?userId=${post.userId}`);
       setUser(res.data);
     };
     fetchUser();
@@ -28,7 +27,7 @@ export default function Post({ post }) {
 
   const likeHandler = () => {
     try {
-      axiosinstance.put("/posts/" + post._id + "/like", { userId: currentUser._id });
+      axios.put("/posts/" + post._id + "/like", { userId: currentUser._id });
     } catch (err) {}
     setLike(isLiked ? like - 1 : like + 1);
     setIsLiked(!isLiked);
@@ -53,7 +52,7 @@ export default function Post({ post }) {
             <span className="postDate">{format(post.createdAt)}</span>
           </div>
           <div className="postTopRight">
-            <MoreVertOutlinedIcon />
+            <MoreVert />
           </div>
         </div>
         <div className="postCenter">
