@@ -1,5 +1,5 @@
 .messenger{
-    height: calc(100vh-70px);
+    height: calc(100vh - 50px);
     display: flex;
 }
 
@@ -22,10 +22,20 @@
     padding: 10px;
 }
 
+.noConversation{
+    position: absolute;
+    top: 10%;
+    font-size: 50px;
+    color: rgb(224, 220, 220);
+    text-align: center;
+    cursor: default;
+}
+
 .chatBoxWrapper{
     display: flex;
     flex-direction: column;
-    height: 45%;
+    height: 90%;
+    position: relative;
 }
 
 

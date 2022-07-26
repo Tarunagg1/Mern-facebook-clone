@@ -5,7 +5,6 @@ const Message = require("../models/Message");
 
 router.post("/", async (req, res) => {
     const newMessage = new Message(req.body);
-
     try {
         const savedMessage = await newMessage.save();
         res.status(200).json(savedMessage);
@@ -15,7 +14,6 @@ router.post("/", async (req, res) => {
 });
 
 //get
-
 router.get("/:conversationId", async (req, res) => {
     try {
         const messages = await Message.find({
